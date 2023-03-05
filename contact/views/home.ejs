@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>
+            <%= locals.title%>
+        </title>
+        <script src="https://kit.fontawesome.com/4be5d91d91.js" crossorigin="anonymous"></script>
+        <!-- our css file should be below all other so that we can override  it  -->
+        <link rel="stylesheet" href="/css/home.css">
+    </head>
+    <body>
+        <h1 id="page-heading">
+            <i class="fa-light fa-book-user"></i>
+            My Contacts List</h1>
+
+        <div id="contacts-list-container">
+            <ul>
+                   
+                <% for (let i of contact_list) { %> 
+                   <li class="contact>
+                    <div class="details"> 
+                        <li>
+                            <p><%= i.name %></p>
+                            <p><%= i.phone %></p>
+                        </li>
+                    </div>
+                    <div class="delete-button">
+                        <a href="/delete-contact/?phone=<%= i.phone %>">
+                            delete
+                        </a>
+                    </div>
+                    <li>
+                <% } %>
+            </ul>
+        </div>
+
+        <form id="new-contact-form"action="/create-contact" method="POST">
+            <input type="text" name="name" placeholder="Enter name" required>
+            <input type="number" name="phone" placeholder="Enter phone" required>
+            <button type="submit">Add contact</button>
+        </form>
+        <script type="text/javascript" src="/js/home.js"></script>
+    </body>
+</html>
